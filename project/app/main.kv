@@ -1,0 +1,53 @@
+#:kivy 2.1.0
+
+<ClockApp>
+
+    Screen:
+        name: 'clock_screen'
+
+        Label:
+            text: root.current_time
+            font_size: dp(70)
+        FloatLayout:
+            ImageButton:
+                size_hint: None, None
+                size: dp(30), dp(30)
+                pos: dp(10), dp(10) 
+                source: '../assets/settings_icon.png'
+                on_press:
+                    root.transition.direction = 'left'
+                    root.current = 'settings_menu'
+
+    Screen:
+        name: 'settings_menu'
+
+        BoxLayout:
+            orientation: 'vertical'
+            
+            Label:
+                text: 'Seconds'
+            Switch:
+                on_active: root.toggle_seconds(self, self.active)
+
+            Label:
+                text: 'Day + Month'
+            Switch:
+
+            Label:
+                text: 'Day of Week'
+            Switch:
+
+            Label:
+                text: 'Year'
+            Switch:
+
+            Button:
+                size_hint_x: 0.2
+                pos_hint: {'center_x': 0.5}
+                text: 'Change Colour'
+
+            Button:
+                text: 'Back'    
+                on_press:
+                    root.transition.direction = 'right'
+                    root.current = 'clock_screen'
