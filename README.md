@@ -5,6 +5,8 @@ The app displays the current local time. You can press the gear icon on the bott
 
 Currently, only the 'Seconds' option works.
 
+I'm new to Kivy, so just making a simple project to become more comfortable with how Kivy works.
+
 (<a target="_blank" href="https://icons8.com/icon/2969/settings">Settings</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>)
 
 ![main screen showing time without seconds](https://user-images.githubusercontent.com/96877426/208497212-9526147c-8f38-4884-856c-a050f27b5bfe.png)
