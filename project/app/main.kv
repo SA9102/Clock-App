@@ -4,11 +4,31 @@
 
     Screen:
         name: 'clock_screen'
-
-        Label:
-            text: root.current_time
-            font_size: dp(70)
+        # BoxLayout:
+        #     orientation: 'vertical'
+        #     # spacing: dp(-475)
+        #     BoxLayout:
+        #         orientation: 'vertical'
+        #         id: clock_screen_id
+        #         Label:
+        #             text: root.current_time
+        #             font_size: dp(70)
+        # FloatLayout:
+        #     ImageButton:
+        #         size_hint: None, None
+        #         size: dp(30), dp(30)
+        #         pos: dp(10), dp(10) 
+        #         source: '../assets/settings_icon.png'
+        #         on_press:
+        #             root.transition.direction = 'left'
+        #             root.current = 'settings_menu'
+        
         FloatLayout:
+            id: clock_screen_id
+            Label:
+                text: root.current_time
+                font_size: dp(70)
+
             ImageButton:
                 size_hint: None, None
                 size: dp(30), dp(30)
@@ -32,7 +52,7 @@
             Label:
                 text: 'Day + Month'
             Switch:
-
+                on_active: root.toggle_day_and_month(self, self.active)
             Label:
                 text: 'Day of Week'
             Switch:

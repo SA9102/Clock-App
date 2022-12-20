@@ -2,15 +2,20 @@
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.properties import StringProperty
+from kivy.uix.label import Label
 from kivy.clock import Clock
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.image import Image
+from kivy.metrics import dp
 from datetime import datetime
 
 class ImageButton(ButtonBehavior, Image):
     # Instead of always having a standard button, we can have an image that
     # behaves like a button, which is what this widget is
     pass
+
+class DateText(Label):
+    text = 'Hello'
 
 class ClockApp(ScreenManager): 
     # This class is the root of the app/
@@ -40,6 +45,14 @@ class ClockApp(ScreenManager):
 
     def toggle_seconds(self, instance, seconds_switch_on):
         self.seconds_on = seconds_switch_on
+
+    def toggle_day_and_month(self, instance, day_and_month_switch_on):
+        if day_and_month_switch_on:
+            self.date_label = Label(text=datetime.now().strftime('%d %b'), pos=(0, dp(-60)))
+            self.ids.clock_screen_id.add_widget(self.date_label)
+        else:
+            self.ids.clock_screen_id.remove_widget(self.date_label)
+        self.day_and_month_on = day_and_month_switch_on
 
 class Main(App):
     def build(self):
