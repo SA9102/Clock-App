@@ -47,20 +47,21 @@
             Label:
                 text: 'Seconds'
             Switch:
-                on_active: root.toggle_seconds(self, self.active)
+                on_active: root.update_screen(self, self.active, 'seconds')
 
             Label:
                 text: 'Day + Month'
             Switch:
-                on_active: root.toggle_day_and_month(self, self.active)
+                on_active: root.update_screen(self, self.active, 'day_+_month')
+
             Label:
                 text: 'Day of Week'
             Switch:
-
+                on_active: root.update_screen(self, self.active, 'day_of_week')
             Label:
                 text: 'Year'
             Switch:
-
+                on_active: root.update_screen(self, self.active, 'year')
             Button:
                 size_hint_x: 0.2
                 pos_hint: {'center_x': 0.5}
