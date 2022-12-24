@@ -9,3 +9,5 @@ You can start the stopwatch, as well as stop it and reset it back to 0. You can 
 ### 24/12/22:
 
 Branch created and first commit.
+
+The class 'ClockApp' is no longer a ScreenManager, instead it is a vertical BoxLayout that contains two widgets: a ScreenManager, and another BoxLayout that contains the navigation buttons. This way, the navigation buttons will always remain static no matter the Screen displayed.
