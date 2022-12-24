@@ -79,7 +79,7 @@ class ClockApp(BoxLayout):
     def reset_stopwatch(self, instance):
         # Reset stopwatch to 0
 
-        self.stop_stopwatch = 0
+        self.stopwatch_time = 0
 
     def update_stopwatch(self, *args):
         # This method is called every 0.1 seconds, so add 0.1 to stopwatch_time
