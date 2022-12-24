@@ -1,74 +1,115 @@
 #:kivy 2.1.0
 
 <ClockApp>
+    # ClockApp is a BoxLayout which contains two widgets: a ScreenManager, and another
+    # BoxLayout that contains navigation buttons. This way, the navigation buttons will always
+    # remain static regardless of the Screen that is displayed.
+    
+    orientation: 'vertical'
 
-    Screen:
-        name: 'clock_screen'
-        # BoxLayout:
-        #     orientation: 'vertical'
-        #     # spacing: dp(-475)
-        #     BoxLayout:
-        #         orientation: 'vertical'
-        #         id: clock_screen_id
-        #         Label:
-        #             text: root.current_time
-        #             font_size: dp(70)
-        # FloatLayout:
-        #     ImageButton:
-        #         size_hint: None, None
-        #         size: dp(30), dp(30)
-        #         pos: dp(10), dp(10) 
-        #         source: '../assets/settings_icon.png'
-        #         on_press:
-        #             root.transition.direction = 'left'
-        #             root.current = 'settings_menu'
+    ScreenManager:
+        id: screen_manager
+        Screen:
+            name: 'clock_screen'
+            BoxLayout: 
+                FloatLayout:
+                    id: clock_screen_id
+                    Label:
+                        text: root.current_time
+                        font_size: dp(70)
+
+                    ImageButton:
+                        size_hint: None, None
+                        size: dp(30), dp(30)
+                        pos: dp(10), dp(10) 
+                        source: '../assets/settings_icon.png'
+                        on_press:
+                            root.ids.screen_manager.transition.direction = 'up'
+                            root.ids.screen_manager.current = 'settings_menu'
+
+        Screen:
+            name: 'settings_menu'
+
+            BoxLayout:
+                orientation: 'vertical'
+                
+                Label:
+                    text: 'Seconds'
+                Switch:
+                    on_active: root.update_screen(self, self.active, 'seconds')
+
+                Label:
+                    text: 'Day + Month'
+                Switch:
+                    on_active: root.update_screen(self, self.active, 'day_+_month')
+
+                Label:
+                    text: 'Day of Week'
+                Switch:
+                    on_active: root.update_screen(self, self.active, 'day_of_week')
+                Label:
+                    text: 'Year'
+                Switch:
+                    on_active: root.update_screen(self, self.active, 'year')
+                Button:
+                    size_hint_x: 0.2
+                    pos_hint: {'center_x': 0.5}
+                    text: 'Change Colour'
+
+                Button:
+                    text: 'Back'    
+                    on_press:
+                        root.ids.screen_manager.transition.direction = 'down'
+                        root.ids.screen_manager.current = 'clock_screen'
         
-        FloatLayout:
-            id: clock_screen_id
-            Label:
-                text: root.current_time
-                font_size: dp(70)
+        Screen:
+            name: 'stopwatch_screen'
 
-            ImageButton:
-                size_hint: None, None
-                size: dp(30), dp(30)
-                pos: dp(10), dp(10) 
-                source: '../assets/settings_icon.png'
-                on_press:
-                    root.transition.direction = 'left'
-                    root.current = 'settings_menu'
+            BoxLayout: 
+                FloatLayout:
+                    id: stopwatch_screen_id
+                    Label:
+                        text: str(root.stopwatch_time)
+                        font_size: dp(70)
 
-    Screen:
-        name: 'settings_menu'
+                    Button:
+                        id: start_button
+                        text: 'Start'
+                        size_hint: None, None
+                        size: dp(100), dp(50)
+                        pos: (root.width / 2) - (self.width / 2), (root.height / 2) - dp(130)
+                        on_press: root.start_stopwatch(self)
 
-        BoxLayout:
-            orientation: 'vertical'
-            
-            Label:
-                text: 'Seconds'
-            Switch:
-                on_active: root.update_screen(self, self.active, 'seconds')
+                    Button:
+                        id: stop_button
+                        text: 'Stop'
+                        size_hint: None, None
+                        size: dp(100), dp(50)
+                        pos: (root.width / 2) - (self.width / 2), (root.height / 2) - dp(200)
+                        on_press: root.stop_stopwatch(self)
+                        disabled: True
 
-            Label:
-                text: 'Day + Month'
-            Switch:
-                on_active: root.update_screen(self, self.active, 'day_+_month')
+                    Button:
+                        id: reset_button
+                        text: 'Reset'
+                        size_hint: None, None
+                        size: dp(100), dp(50)
+                        pos: (root.width / 2) - (self.width / 2), (root.height / 2) - dp(270)
+                        on_press: root.reset_stopwatch(self)
 
-            Label:
-                text: 'Day of Week'
-            Switch:
-                on_active: root.update_screen(self, self.active, 'day_of_week')
-            Label:
-                text: 'Year'
-            Switch:
-                on_active: root.update_screen(self, self.active, 'year')
-            Button:
-                size_hint_x: 0.2
-                pos_hint: {'center_x': 0.5}
-                text: 'Change Colour'
 
-            Button:
-                text: 'Back'    
-                on_press:
-                    root.transition.direction = 'right'
-                    root.current = 'clock_screen'
+    BoxLayout:
+        size_hint_y: None
+        size: root.width, dp(40)
+        Button:
+            id: clock_button
+            text: 'Clock'
+            on_press:
+                root.ids.screen_manager.transition.direction = 'right'
+                root.ids.screen_manager.current = 'clock_screen'
+        Button:
+            id: stopwatch_button
+            text: 'Stopwatch'
+            on_press:
+                root.ids.screen_manager.transition.direction = 'left'
+                root.ids.screen_manager.current = 'stopwatch_screen'
