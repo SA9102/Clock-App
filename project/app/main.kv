@@ -29,7 +29,6 @@
 
         Screen:
             name: 'settings_menu'
-
             BoxLayout:
                 orientation: 'vertical'
                 
@@ -69,9 +68,9 @@
                 FloatLayout:
                     id: stopwatch_screen_id
                     Label:
-                        text: str(root.stopwatch_time)
+                        text: str(root.stopwatch_time_displayed)
                         font_size: dp(70)
-
+                        pos_hint: {'center_x': 0.5}
                     Button:
                         id: start_button
                         text: 'Start'
