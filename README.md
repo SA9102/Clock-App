@@ -5,6 +5,8 @@ The app displays the current local time. You can press the gear icon on the bott
 
 All setting options (apart from chaning the colour) work.
 
+**I am currently working on a stopwatch feature to add to the program. Please see the 'stopwatch feature' branch for more details.**
+
 (By mistake I commited this early stopwatch feature to the main branch. From now on the stopwatch feature will be in the 'stopwatch-feature' branch and will be merged once completed).
 
 I'm new to Kivy, so just making a simple project to become more comfortable with how Kivy works.
