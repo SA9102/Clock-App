@@ -9,6 +9,7 @@ I'm new to Kivy, so just making a simple project to become more comfortable with
 
 (<a target="_blank" href="https://icons8.com/icon/2969/settings">Settings</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>)
 
+![clock app preview](https://user-images.githubusercontent.com/96877426/209847075-5f994fd5-4bdf-486c-8b96-ae25b5546de3.gif)
 
 ## Change Log
 
