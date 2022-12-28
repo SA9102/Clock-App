@@ -3,13 +3,17 @@ This is the branch where I am working on a stopwatch feature for Clock App.
 
 You can start the stopwatch, as well as stop it and reset it back to 0. You can also switch between the 'Clock' screen and the 'Stopwatch' screen.
 
-![stopwatch feature preview](https://user-images.githubusercontent.com/96877426/209566207-e46436ff-59ab-4497-aadb-73a35483b7d2.gif)
+(<a target="_blank" href="https://icons8.com/icon/2969/settings">Settings</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>)
 
-![image](https://user-images.githubusercontent.com/96877426/209566382-025e808d-f164-4ade-a15f-c55048bdb592.png)
+![stopwatch feature preview](https://user-images.githubusercontent.com/96877426/209836316-450557be-3ad4-4864-b1f0-f4058e9ca581.gif)
 
 
 
 ## Change Log
+
+### 28/12/22:
+
+Added option to show or hide the milliseconds.
 
 ### 26/12/22:
 
@@ -24,3 +28,4 @@ Fixed an issue where the stopwatch would not reset (and, when pressed, would cau
 Branch created and first commit of this branch.
 
 The class 'ClockApp' is no longer a ScreenManager, instead it is a vertical BoxLayout that contains two widgets: a ScreenManager, and another BoxLayout that contains the navigation buttons. This way, the navigation buttons will always remain static no matter the Screen displayed.
+
