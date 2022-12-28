@@ -36,6 +36,8 @@ class ClockApp(BoxLayout):
     # True if the time reaches '99:59:59.9'
     stopwatch_time_limit_reached = False
     milliseconds_on = True
+    hours = 0
+    minutes = 0
 
 
     def __init__(self, **kwargs):
@@ -105,10 +107,10 @@ class ClockApp(BoxLayout):
 
             # Get the number of minutes and hours
             # Truncate the time to 1 decimal place.
-            minutes = int(self.stopwatch_time) // 60
-            hours = int(minutes) // 60
+            self.minutes = int(self.stopwatch_time) // 60
+            self.hours = int(self.minutes) // 60
             # Ensure that the time displayed is always in the format 'hh:mm:ss.ms'
-            self.stopwatch_time_displayed = ('0' if hours < 10 else '') + str(hours) + ':' + ('0' if minutes % 60 < 10 else '') + str(minutes % 60) + ':' + ('0' if self.stopwatch_time % 60 < 10 else '') + (str(float('%.1f'%(self.stopwatch_time % 60))) if self.milliseconds_on else str(int(self.stopwatch_time % 60)))
+            self.stopwatch_time_displayed = ('0' if self.hours < 10 else '') + str(self.hours) + ':' + ('0' if self.minutes % 60 < 10 else '') + str(self.minutes % 60) + ':' + ('0' if self.stopwatch_time % 60 < 10 else '') + (str(float('%.1f'%(self.stopwatch_time % 60))) if self.milliseconds_on else str(int(self.stopwatch_time % 60)))
         # If the stopwatch reached '99:59:59.9'
         else:
             # Stop the clock schedule
@@ -121,6 +123,8 @@ class ClockApp(BoxLayout):
         # The milliseconds on the stopwatch will be displayed if this option is True
 
         self.milliseconds_on = switch_active
+        # Ensure that the 'millisecond on/off update' happens even when the stopwatch is paused or has not started.
+        self.stopwatch_time_displayed = ('0' if self.hours < 10 else '') + str(self.hours) + ':' + ('0' if self.minutes % 60 < 10 else '') + str(self.minutes % 60) + ':' + ('0' if self.stopwatch_time % 60 < 10 else '') + (str(float('%.1f'%(self.stopwatch_time % 60))) if self.milliseconds_on else str(int(self.stopwatch_time % 60)))
 
 
 class Main(App):
