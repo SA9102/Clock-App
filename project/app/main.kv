@@ -4,8 +4,9 @@
     # ClockApp is a BoxLayout which contains two widgets: a ScreenManager, and another
     # BoxLayout that contains navigation buttons. This way, the navigation buttons will always
     # remain static regardless of the Screen that is displayed.
-    
+     
     orientation: 'vertical'
+    
 
     ScreenManager:
         id: screen_manager
@@ -25,11 +26,10 @@
                         source: '../assets/settings_icon.png'
                         on_press:
                             root.ids.screen_manager.transition.direction = 'up'
-                            root.ids.screen_manager.current = 'settings_menu'
+                            root.ids.screen_manager.current = 'settings_menu_clock'
 
         Screen:
-            name: 'settings_menu'
-
+            name: 'settings_menu_clock'
             BoxLayout:
                 orientation: 'vertical'
                 
@@ -69,9 +69,10 @@
                 FloatLayout:
                     id: stopwatch_screen_id
                     Label:
-                        text: str(root.stopwatch_time)
-                        font_size: dp(70)
 
+                        text: str(root.stopwatch_time_displayed)
+                        font_size: dp(70)
+                        pos_hint: {'center_x': 0.5}
                     Button:
                         id: start_button
                         text: 'Start'
@@ -97,10 +98,43 @@
                         pos: (root.width / 2) - (self.width / 2), (root.height / 2) - dp(270)
                         on_press: root.reset_stopwatch(self)
 
+                    ImageButton:
+                        size_hint: None, None
+                        size: dp(30), dp(30)
+                        pos: dp(10), dp(10) 
+                        source: '../assets/settings_icon.png'
+                        on_press:
+                            root.ids.screen_manager.transition.direction = 'up'
+                            root.ids.screen_manager.current = 'settings_menu_stopwatch'
 
+        Screen:
+            name: 'settings_menu_stopwatch'
+            BoxLayout:
+                orientation: 'vertical'
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                size_hint: None, None
+                size: self.size
+                Label:
+                    text: 'Milliseconds'
+                    size_hint_y: None
+                    height: dp(50)
+                Switch:
+                    size_hint_y: None
+                    height: dp(50)
+                    active: True
+                    on_active: root.toggle_milliseconds(self, self.active)
+
+            Button:
+                text: 'Back'
+                size_hint: 1, None
+                height: dp(40)
+                on_press:
+                    root.ids.screen_manager.transition.direction = 'down'
+                    root.ids.screen_manager.current = 'stopwatch_screen'
     BoxLayout:
         size_hint_y: None
-        size: root.width, dp(40)
+        height: dp(40)
+
         Button:
             id: clock_button
             text: 'Clock'
@@ -112,4 +146,6 @@
             text: 'Stopwatch'
             on_press:
                 root.ids.screen_manager.transition.direction = 'left'
+
                 root.ids.screen_manager.current = 'stopwatch_screen'
+

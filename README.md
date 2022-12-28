@@ -1,21 +1,24 @@
-# Clock-App
+# Stopwatch Feature
 A self-made, simple clock application made with Python and the Kivy framework. Limited in functionality and appearance, but is continually updated.
 
-The app displays the current local time. You can press the gear icon on the bottom left which brings up the settings. It also has a stopwatch feature with basic functionality.
+The app displays the current local time, and has a stopwatch feature with basic functionality.
 
 All setting options (apart from chaning the colour) work.
-
-**I am currently working on a stopwatch feature to add to the program. Please see the 'stopwatch feature' branch for more details.**
-
-(By mistake I commited this early stopwatch feature to the main branch. From now on the stopwatch feature will be in the 'stopwatch-feature' branch and will be merged once completed).
 
 I'm new to Kivy, so just making a simple project to become more comfortable with how Kivy works.
 
 (<a target="_blank" href="https://icons8.com/icon/2969/settings">Settings</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>)
 
 
-
 ## Change Log
+
+### 28/12/22:
+
+Stopwatch feature completed; 'stopwatch-feature' branch merged to 'main'.
+
+### 24/12/22:
+
+'stopwatch-feature' branch created to work on the stopwatch feature of the program.
 
 ### 21/12/22:
 
