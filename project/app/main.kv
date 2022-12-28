@@ -114,12 +114,6 @@
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 size_hint: None, None
                 size: self.size
-                canvas.before:
-                    Color:
-                        rgba: (1, 0, 0, 1)
-                    Rectangle:
-                        size: self.size
-                        pos: self.pos
                 Label:
                     text: 'Milliseconds'
                     size_hint_y: None
