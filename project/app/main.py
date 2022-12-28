@@ -35,6 +35,7 @@ class ClockApp(BoxLayout):
     stopwatch_time_displayed = StringProperty('00:00:00.0')
     # True if the time reaches '99:59:59.9'
     stopwatch_time_limit_reached = False
+    milliseconds_on = True
 
 
     def __init__(self, **kwargs):
@@ -106,14 +107,20 @@ class ClockApp(BoxLayout):
             # Truncate the time to 1 decimal place.
             minutes = int(self.stopwatch_time) // 60
             hours = int(minutes) // 60
-            # Ensure that the time displayed is always in the format 'hh:mm:ss' with a leading fractional second
-            self.stopwatch_time_displayed = ('0' if hours < 10 else '') + str(hours) + ':' + ('0' if minutes % 60 < 10 else '') + str(minutes % 60) + ':' + ('0' if self.stopwatch_time % 60 < 10 else '') + str(float('%.1f'%(self.stopwatch_time % 60)))
+            # Ensure that the time displayed is always in the format 'hh:mm:ss.ms'
+            self.stopwatch_time_displayed = ('0' if hours < 10 else '') + str(hours) + ':' + ('0' if minutes % 60 < 10 else '') + str(minutes % 60) + ':' + ('0' if self.stopwatch_time % 60 < 10 else '') + (str(float('%.1f'%(self.stopwatch_time % 60))) if self.milliseconds_on else str(int(self.stopwatch_time % 60)))
         # If the stopwatch reached '99:59:59.9'
         else:
             # Stop the clock schedule
             Clock.unschedule(self.update_stopwatch)
             self.ids.stop_button.disabled = True
             self.stopwatch_time_limit_reached = True
+
+    def toggle_milliseconds(self, instance, switch_active):
+        # Called when the 'Milliseconds' option is toggled
+        # The milliseconds on the stopwatch will be displayed if this option is True
+
+        self.milliseconds_on = switch_active
 
 
 class Main(App):
