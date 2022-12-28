@@ -5,11 +5,15 @@ You can start the stopwatch, as well as stop it and reset it back to 0. You can 
 
 (<a target="_blank" href="https://icons8.com/icon/2969/settings">Settings</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>)
 
-![stopwatch feature preview](https://user-images.githubusercontent.com/96877426/209836316-450557be-3ad4-4864-b1f0-f4058e9ca581.gif)
+![stopwatch feature preview](https://user-images.githubusercontent.com/96877426/209838820-00c99fd6-0302-444f-a100-367510ad71d9.gif)
 
 
 
 ## Change Log
+
+### 28/12/22:
+
+Previously, when the 'Milliseconds' option was toggled, it would only show/hide once the stopwatch has begun or resumed. This has now been fixed; the milliseconds now show/hide even when the stopwatch is paused or not started.
 
 ### 28/12/22:
 
