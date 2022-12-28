@@ -28,6 +28,7 @@ class ClockApp(BoxLayout):
     # The date that will be shown on the screen. Initially no date is shown.
     date_label = Label(pos=(0, dp(-60)))
 
+
     # This contains the stopwatch_time in seconds. It is used to get the time in the format 'hh:mm:ss'
     # which will be displayed in the app.
     stopwatch_time = 0
@@ -88,6 +89,7 @@ class ClockApp(BoxLayout):
     def reset_stopwatch(self, instance):
         # Reset stopwatch to 0
 
+
         self.stopwatch_time = 0
         self.stopwatch_time_displayed = '00:00:00.0'
 
@@ -100,6 +102,7 @@ class ClockApp(BoxLayout):
     def update_stopwatch(self, *args):
         # This method is called every 0.1 seconds, so add 0.1 to stopwatch_time
         # every time this method is called
+
 
         # Stop the stopwatch when the time reaches '99:59:59.9'
         if self.stopwatch_time < 359999.8:
@@ -125,7 +128,6 @@ class ClockApp(BoxLayout):
         self.milliseconds_on = switch_active
         # Ensure that the 'millisecond on/off update' happens even when the stopwatch is paused or has not started.
         self.stopwatch_time_displayed = ('0' if self.hours < 10 else '') + str(self.hours) + ':' + ('0' if self.minutes % 60 < 10 else '') + str(self.minutes % 60) + ':' + ('0' if self.stopwatch_time % 60 < 10 else '') + (str(float('%.1f'%(self.stopwatch_time % 60))) if self.milliseconds_on else str(int(self.stopwatch_time % 60)))
-
 
 class Main(App):
     def build(self):

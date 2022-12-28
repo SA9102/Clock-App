@@ -61,7 +61,6 @@
                     on_press:
                         root.ids.screen_manager.transition.direction = 'down'
                         root.ids.screen_manager.current = 'clock_screen'
-
         
         Screen:
             name: 'stopwatch_screen'
@@ -70,6 +69,7 @@
                 FloatLayout:
                     id: stopwatch_screen_id
                     Label:
+
                         text: str(root.stopwatch_time_displayed)
                         font_size: dp(70)
                         pos_hint: {'center_x': 0.5}
@@ -134,6 +134,7 @@
     BoxLayout:
         size_hint_y: None
         height: dp(40)
+
         Button:
             id: clock_button
             text: 'Clock'
@@ -145,4 +146,6 @@
             text: 'Stopwatch'
             on_press:
                 root.ids.screen_manager.transition.direction = 'left'
+
                 root.ids.screen_manager.current = 'stopwatch_screen'
+
