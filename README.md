@@ -1,4 +1,4 @@
-# Stopwatch Feature
+# Clock App
 A self-made, simple clock application made with Python and the Kivy framework. Limited in functionality and appearance, but is continually updated.
 
 The app displays the current local time, and has a stopwatch feature with basic functionality.
